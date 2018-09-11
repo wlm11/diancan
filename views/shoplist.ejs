@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>用户信息</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles1.css" type="text/css" />
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .navbar-inverse {
+            background-color: #4387b3;
+            color: #fff;
+        }
+        .navbar-inverse .navbar-brand {
+            color: #fff;
+        }
+        .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+            border-color: #4387b3;
+        }
+        .menu ol { padding-left:15px; border:#E7E7E7 1px solid; border-top:none;background: #f7f2e5;}
+        .menu li i{background-color: #ae9c7e;padding: 1px 4px;color: #fff;text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.8);font-family: 宋体;font-style:normal;}
+        .menu a{color: #3f3f3f;text-decoration: none;}
+        .menu .no {display:none;}
+        .menu ol a{width: 228px;display: block;line-height: 2em;margin-left: 20px;}
+        .text{
+            width:60px;
+            display: inline-block;
+            margin-top:10px;
+        }
+        .imgright{
+            border-radius:100%;
+            float:left;margin-top: 12px;
+            margin-right: 14px;
+            width: 40px; height: 40px;
+            background:url('/images/t01d7de9ec9fd9ce918.png')
+        }
+        .box{
+            padding-top:13px;
+        }
+        ul.expmenu div.header{
+            background-color:#f8f8f8!important;
+            color:#000!important;
+            font-size:20px;
+
+        }
+
+        #btn_group{
+            padding:20px 20px;
+        }
+        #btn_group button{
+            margin-right:10px;
+        }
+
+        .pics{
+            width:150px;
+            height: 150px;
+            overflow: hidden;
+        }
+        .pics img{
+            width: 100%;
+            /*heigth:150px;*/
+            /*overflow:hidden;*/
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CMS后台管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+            <li class="dropdown">
+                <div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div  class="imgright" >
+
+                    </div>
+                    <p class="text">欢迎光临 amdim</p>
+                    <span class="caret"></span>
+                </div>
+            </li>
+        </div>
+    </div>
+</nav>
+
+<div class="box col-md-4" style="padding:0px; width:16%">
+    <ul class="expmenu col-md-4" style="padding:0px">
+        <li>
+            <div class="header">
+                <span class="label">控制台</span>
+            </div>
+        </li>
+        <li>
+            <div class="header">
+                <span class="label">管理员管理</span>
+                <span class="arrow down"></span>
+            </div>
+        </li>
+        <li>
+            <div class="header">
+                <span class="label">内容分类管理</span>
+                <span class="arrow down"></span>
+            </div>
+        </li>
+        <li>
+            <div class="header">
+                <span class="label">内容管理</span>
+                <span class="arrow down"></span>
+            </div>
+        </li>
+        <li>
+            <div class="header">
+                <span class="label">商品管理</span>
+                <span class="arrow up"></span>
+            </div>
+            <span class="no">
+                        <ul class="menu" style="display:block;">
+                            <li><a href="/class"> 商品分类</a></li>
+                            <li><a style="color:blue" href="/shoplist"> 商品列表</a></li>
+                            <li><a href="/addshop"> 增加商品</a></li>
+                        </ul>
+            </span>
+        </li>
+        <li>
+            <div class="header">
+                <span class="label">订单管理</span>
+                <span class="arrow down"></span>
+            </div>
+        </li>
+        <li>
+            <div class="header">
+                <span class="label">用户管理</span>
+                <span class="arrow down"></span>
+            </div>
+        </li>
+        <li>
+            <div class="header">
+                <span class="label">系统设置</span>
+                <span class="arrow down"></span>
+            </div>
+        </li>
+    </ul>
+</div>
+<div class="container col-md-8">
+    <div class="col-md-8" style="margin-top:50px;">
+        <select name="class" id="class">
+            <%for(var i=0;i<data.length;i++){%>
+            <option value="<%=data[i].class%>"><%=data[i].class%></option>
+            <%}%>
+        </select>
+        <input type="text" id="text">
+        <button type="button" class="btn btn-danger" id="sou">搜索</button>
+    </div>
+
+    <div class="btn-group col-md-8" role="group" aria-label="..." id="btn_group">
+
+        <button type="button" class="btn btn-default  btn-info" data-toggle="modal" data-target="#amend" id="amendOne">编辑</button>
+        <button type="button" class="btn btn-danger" id="del">删除</button>
+    </div>
+
+    <table class="table table-bordered ">
+        <thead>
+        <tr>
+            <th></th>
+            <th>id</th>
+            <th>标题</th>
+            <th>分类</th>
+            <th>价格</th>
+            <th>推荐</th>
+            <th>热销</th>
+            <th>状态</th>
+        </tr>
+        </thead>
+        <tbody id="tbody">
+        <%
+        for(var i=0;i<result.length;i++){
+        %>
+        <tr>
+            <th><input type="radio" name="check" class="gou" data-id="<%=result[i].id%>"></th>
+            <th><%=i+1%></th>
+            <th><%=result[i].shop%>
+                <br>
+                <div class="pics">
+                <img src="/<%= result[i].image%>.jpg" alt="">
+                </div>
+            </th>
+            <th><%=result[i].class%></th>
+            <th><%=result[i].money%></th>
+            <th><%if(result[i].quality){%>
+                √
+            <%}else{%>
+                ×
+            <%}%></th>
+            <th><%if(result[i].hot){%>
+                √
+                <%}else{%>
+                ×
+                <%}%></th>
+            <th><%if(result[i].states){%>
+                √
+                <%}else{%>
+                ×
+                <%}%></th>
+
+        </tr>
+
+        <%
+        }
+        %>
+        </tbody>
+    </table>
+
+    <!--//修改-->
+    <div class="modal fade" id="amend" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">编辑分类</h4>
+                </div>
+                <div class="modal-body">
+                    <p>商品名：
+                        <input type="text" name="shop"/>
+                    </p>
+                    <p>价格：
+                        <input type="text" name="money"/>
+                    </p>
+                    <p>类型：
+                        <input type="text" name="type" id="class"/>
+                    </p>
+                    <p>描述：
+                        <textarea name="content" id="cont" style="width:200px;height: 50px;"></textarea>
+                    </p>
+                    <!--<p>状态：-->
+                        <!--true:<input type="radio" name="state">-->
+                        <!--false:<input type="radio" name="state">-->
+                    <!--</p>-->
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">cancel</button>
+                    <button type="button" class="btn btn-primary" id="amendbtn">ok</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div id="pagenavbox"></div>
+
+
+</div>
+
+<script src="js/jquery-1.12.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="/js/PageNav.js"></script>
+
+<script>
+
+    // //删除
+    $("#del").click(function(){
+        var id=$("input[name=check]:checked").data("id");
+        // console.log(id);
+        $("input[name=check]:checked").parent("th").parent("tr").remove();
+        $.post("/delshoplist/"+id,function(data){
+            if(data.result==1){
+                alert("删除成功");
+            }
+        })
+    })
+
+    //点击编辑渲染数据
+    $("#amendOne").click(function(){
+        var id=$("input[name=check]:checked").data("id");
+
+        $.ajax({
+            "url":"/amendlist/"+id,
+            "type":"post",
+            "success":function(data){
+                // console.log(data);
+                var data=data.result[0];
+                $("#amend .modal-dialog .modal-body input[name=shop]").val(data.shop);
+                $("#amend .modal-dialog .modal-body input[name=type]").val(data.class);
+                $("#amend .modal-dialog .modal-body input[name=money]").val(data.money);
+                $("#cont").val(data.content);
+
+            }
+        })
+
+        // $.post("/amend/"+id,{"id":$("input[name=user]").val(),"check":"0","user":$("input[name=user]").val(),"sex":$("input[name=xingbie]:checked").val(),"state":$("option:selected").val(),"hobby":$("input[name=hobby]").val(),"marriage":$("input[name=marriage]").val(),"bir":$("input[name=bir]").val(),"address":$("input[name=address]").val()},function(data){
+        //     if(data.result==1){
+        //         alert("编辑成功");
+        //     }
+        // })
+    })
+    //点击ok  更新数据
+    $("#amendbtn").click(function(){
+        var id=$("input[name=check]:checked").data("id");
+        // console.log($("#type").val());
+        $.post("/updateshoplist/"+id,{"shop":$("#amend .modal-dialog .modal-body input[name=shop]").val(),"class": $("#amend .modal-dialog .modal-body input[name=type]").val(),"money":$("#amend .modal-dialog .modal-body input[name=money]").val(),"content":$("#cont").val()},function(data){
+            if(data.result==1){
+                alert("更改成功");
+                window.location="/shoplist";
+            }
+        })
+    })
+
+    $.get("/Allshop?page=1",function(data){
+        //分页条
+        new PageNav({
+            boxid : "pagenavbox",
+            page : 1,
+            pageAmount : data.pageAmount,
+            change : function(pagenumber){
+                gotopage(pagenumber);
+            }
+        });
+
+        gotopage(1);
+
+        function gotopage(pagenumber){
+            //清空
+            $("#tbody").empty();
+
+            //获得新的数据
+            $.get("/Allshop?page=" + pagenumber,function(data){
+                // console.log(data);
+                $.each(data.results,function(i, n){
+                    console.log(n);
+                    var state;
+                    if(n.states=="true"){
+                        state="√";
+                    }else{
+                        state="×";
+                    };
+                    var quality;
+                    if(n.quality=="true"){
+                        quality="√";
+                    }else{
+                        quality="×";
+                    }
+                    var hot;
+                    if(n.hot=="true"){
+                        hot="√";
+                    }else{
+                        hot="×";
+                    }
+
+                    //创建一个tr标签
+                    // console.log(i,n);
+                    $tr = $("<tr></tr>");
+                    $("<th><input type='radio' name='check' class='gou' data-id='"+n._id+"'></th>").appendTo($tr);
+                    $("<th></th>").html(i+1).appendTo($tr);
+                    $("<th>"+n.shop+"<div class='pics'><img src='/"+n.image+".jpg'</th></div>").appendTo($tr);
+                    $("<th></th>").html(n.class).appendTo($tr);
+                    $("<th></th>").html(n.money).appendTo($tr);
+                    $("<th></th>").html(quality).appendTo($tr);
+                    $("<th></th>").html(hot).appendTo($tr);
+                    $("<th></th>").html(state).appendTo($tr);
+                    //上树
+                    $tr.appendTo($("#tbody"));
+                });
+            });
+        }
+    });
+
+    //搜索
+    $("#class").change(function(){
+        // console.log($(this).val());
+        $("#text").val($(this).val());
+    })
+
+    $("#sou").click(function () {
+        $("#tbody").empty();
+        $("#pagenavbox").css("display","none");
+        $.post("/getcont/"+$("#text").val(),function(data){
+            console.log(data);
+            $.each(data.result,function(i, n){
+                console.log(n);
+                var state;
+                if(n.states=="true"){
+                    state="√";
+                }else{
+                    state="×";
+                };
+                var quality;
+                if(n.quality=="true"){
+                    quality="√";
+                }else{
+                    quality="×";
+                }
+                var hot;
+                if(n.hot=="true"){
+                    hot="√";
+                }else{
+                    hot="×";
+                }
+
+                //创建一个tr标签
+                // console.log(i,n);
+                $tr = $("<tr></tr>");
+                $("<th><input type='radio' name='check' class='gou' data-id='"+n._id+"'></th>").appendTo($tr);
+                $("<th></th>").html(i+1).appendTo($tr);
+                $("<th>"+n.shop+"<div class='pics'><img src='/"+n.image+".jpg'</th></div>").appendTo($tr);
+                $("<th></th>").html(n.class).appendTo($tr);
+                $("<th></th>").html(n.money).appendTo($tr);
+                $("<th></th>").html(quality).appendTo($tr);
+                $("<th></th>").html(hot).appendTo($tr);
+                $("<th></th>").html(state).appendTo($tr);
+                //上树
+                $tr.appendTo($("#tbody"));
+            });
+        })
+    })
+
+    /* 滑动/展开 */
+    $("ul.expmenu li > div.header").click(function(){
+
+        var arrow = $(this).find("span.arrow");
+
+        if(arrow.hasClass("up")){
+            arrow.removeClass("up");
+            arrow.addClass("down");
+        }else if(arrow.hasClass("down")){
+            arrow.removeClass("down");
+            arrow.addClass("up");
+        }
+
+        $(this).parent().find("ul.menu").slideToggle();
+
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>食物详情</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/basic.css"/>
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script src="js/jquery-1.12.3.min.js"></script>
+		<script type="text/javascript" src="js/vue.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<style>
+			.imgbox{
+				width:100%;
+				height: 80px;
+				overflow: hidden;
+			}
+		</style>
+	</head>
+	<body>
+		<header class="index_header">
+			<div class="hlist">
+				<img src="images/rexiao.png"/>
+				<p>热销榜</p>				
+			</div>
+			<div class="hlist">
+				<img src="images/caidan.png" />
+				<p>点过的菜</p>				
+			</div>
+			<div class="hlist">
+				
+				<img src="images/sousuo.png"/>
+				<p>搜你喜欢</p>				
+			</div>
+		</header>
+		<div class="content" id="box">
+			<div class="item" v-for="(item,i) in arr4">
+				<h3 class="item_cate">{{item.title}}</h3>
+				<ul class="item_list">
+						<li v-for="items in item.shop" @click="godetail(items._id)">
+								<div class="inner">
+									<div class="imgbox">
+										<img  :src=items.image>
+									</div>
+									<p class="title">{{items.shop}}</p>
+									<p class="price">¥{{items.money}}</p>
+								</div>
+						</li>
+
+				</ul>
+			</div>
+		</div>
+		<script>
+            new Vue({
+                el:'#box',
+                data:{
+                    class:[],
+                    movie:[],
+                    arr4:[]
+                },
+                methods: {
+                    getdata: function () {
+                        // http://172.16.49.48:3001/getdata
+                        this.$http.jsonp('http://localhost:3001/getdata', {},
+                            {
+                                headers: {},
+                                emulateJSON: true
+                            }).then((response) => {
+                            this.movie = response.data;
+                            var json = this.movie
+                            var json1 = []
+                            for (var i = 0; i < json.length; i++) {
+                                json[i].image = "../updata/" + json[i].image + ".jpg"
+                                var key = json[i].class
+                                if (json1[key]) {
+                                    json1[key].push(json[i]);
+                                } else {
+                                    json1[key] = [json[i]];
+                                }
+                            }
+                            for (var key in json1) {
+                                this.arr4.push({title: key, shop: json1[key]})
+                            }
+                        });
+                    },
+                    godetail: function (id) {
+                        window.location="details.html?"+id
+                        console.log(id)
+                    }
+				},
+                mounted(){
+                    this.getdata()
+				}
+
+            })
+		</script>
+	</body>
+</html>

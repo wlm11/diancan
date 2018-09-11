@@ -1,0 +1,36 @@
+﻿*{margin:0;padding:0;list-style-type:none;}
+a,img{border:0;}
+body{font:12px/180% Arial, Helvetica, sans-serif, "微软雅黑";color:#000;}
+/* expmenu */
+ul.expmenu{width: 100%;}
+ul.expmenu li div.header{padding:18px;    border-bottom: 1px #e2e2e2 solid;}
+ul.expmenu li:last-child div.header{border-bottom:none;}
+ul.expmenu li ul li {background-color:#f8f8f8;padding:12px;padding-left:40px;    border-bottom: 1px dotted #d2c8b5;color:#000;text-shadow:0px 1px 0px rgba(255, 255, 255, 0.8);}
+ul.expmenu li ul li:last-child{border-bottom:none;}
+ul.expmenu li ul li.selected{background-color:#f4f4f4;}
+ul.expmenu div.header{
+	color:#000;
+	text-shadow:0px 1px 0px rgba(255, 255, 255, 0.2);
+	background:#f8f8f8;/* Old browsers */
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ae9c7e', endColorstr='#ae9c7e',GradientType=0 );/* IE6-9 */
+}
+ul.expmenu li div.header .label{background:no-repeat;color: #000;font-weight: 500; }
+ul.expmenu li div.header .arrow{display:block;width:16px;height:16px;background:no-repeat center;float:right;}
+ul.expmenu li div.header .arrow.up{background-image:url(../images/arrow_u.png);background-size: 100%; }
+ul.expmenu li div.header .arrow.down{background-image:url(../images/arrow_d.png);background-size: 100%;}
+ul.expmenu li .menu{display:none;}
+/* Mouse Events */
+ul.expmenu div.header:hover{
+	color:#4189c3;
+	filter:progid:DXImageTransform.Microsoft.gradient( startColorstr='#ae9c7e', endColorstr='#ae9c7e',GradientType=0 );/* IE6-9 */
+	cursor:pointer;
+}
+
+ul.expmenu li ul li:not(.selected):hover{
+	background:#efe8d8;/* Old browsers */
+	cursor:pointer;
+}
+ul.expmenu li ul li:not(.selected):active{
+	background:#f1f1f1;/* Old browsers */
+	cursor:pointer;
+}

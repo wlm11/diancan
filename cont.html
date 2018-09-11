@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>无人点单无人支付系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" type="text/css" href="css/basic.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+
+</head>
+<style>
+    img{
+        width: 100%;
+    }
+</style>
+<body>
+
+
+
+<div class="content" id="content">
+
+</div>
+
+<script src="static/js/jquery-1.12.3.min.js"></script>
+
+<script>
+    $.ajax({
+        url:"http://localhost:3001/getdata",
+        type:"get",
+        dataType:"jsonp",
+        success:function(data){
+            var search = window.location.search;
+            // console.log(search);
+            var id=search.split("?")[1];
+            // console.log(id);
+            for(var i=0;i<data.length;i++){
+            if(data[i]._id==id){
+                console.log(data);
+                var str="<div>" +
+                    "<a href='./index.html'>返回</a>"+
+                    "<img src='updata/"+data[i].image+".jpg'>" +
+                        "<div>"+data[i].shop+"</div>"+
+                        "<div>"+data[i].content+"</div>"
+                    "</div>"
+
+                $("#content").append(str);
+            }
+            }
+        }
+    })
+</script>
+</body>
+</html>

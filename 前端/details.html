@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>无人点单无人支付系统</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/basic.css"/>
+    <link rel="stylesheet" type="text/css" href="css/index.css"/>
+    <script src="js/jquery-1.12.3.min.js"></script>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script src="js/vue-resource.js"></script>
+    <style>
+        #shopdetails{
+            width:100%;
+            height: 100%;
+            overflow: hidden;
+            position: fixed;
+            top:0px;
+            left:0px;
+            z-index: 100;
+            transition: 0.5s;
+        }
+
+
+        .shopdetails_img{
+            position: relative;
+            width: 100%;
+            height: 24.5rem;
+        }
+        .shopdetails_img img{
+            width:100%;
+            height: 24.5rem;
+        }
+        /* 商品内容 */
+        .shopdetails_content{
+            width: 100%;
+            height: 14%;
+            background: #fff;
+            padding-top: 5%;
+            position: relative;
+        }
+        .title{
+            line-height: 14px;
+            font-size: 20px;
+            font-weight: 700;
+            color: #07111b;
+            text-align: center;
+            width: 100%;
+        }
+        .split{
+            width: 100%;
+            height: 16px;
+            border-top: 1px solid rgba(7,17,27,0.1);
+            border-bottom: 1px solid rgba(7,17,27,0.1);
+            background: #f3f5f7;
+            margin-top:0px;
+        }
+        /* 商品信息 */
+        .shopin{
+            width: 100%;
+            background-color: #fff;
+            padding-top: 1rem;
+            padding-bottom: 0.8rem;
+        }
+        .shopin .title{
+            line-height: 14px;
+            margin-bottom: 30px;
+            font-size: 20px;
+            color: #07111b;
+        }
+        .shopin p{
+            width:90%;
+            margin:0 auto;
+            line-height: 24px;
+            padding: 0 8px;
+            font-size: 16px;
+            color: #4d555d;
+        }
+        .goback{
+            position: absolute;
+            z-index: 10;
+            top:10px;
+            left:20px;
+            font-size: 20px;
+            color:#fff;
+        }
+    </style>
+</head>
+<body>
+<div id="shopdetails">
+    <div class="goback" @click="goback()">返回
+    </div>
+    <div class="shopdetails_img">
+        <img :src=arr.image alt="">
+    </div>
+    <!-- 商品内容 -->
+    <div class="shopdetails_content">
+        <h1 class="title">{{arr.shop}}</h1>
+    </div>
+    <div class="split"></div>
+    <!-- 商品内容 -->
+    <div class="shopin">
+        <h1 class="title">商品信息</h1>
+        <p class="text">{{arr.content}}</p>
+    </div>
+    <div class="split"></div>
+</div>
+<script>
+    var test = window.location.search;
+    var id=test.split("?")[1]
+    new Vue({
+        el:'#shopdetails',
+        data:{
+            arr:[]
+        },
+        methods: {
+            getdata: function () {
+                // http://172.16.49.48:3001/getdata
+                this.$http.jsonp('http://localhost:3001/getdata', {},
+                    {
+                        headers: {},
+                        emulateJSON: true
+                    }).then((response) => {
+                    this.movie = response.data;
+                    for(var i=0;i<this.movie.length;i++){
+                        if(id==this.movie[i]._id){
+                             this.arr=this.movie[i]
+                        }
+                    }
+                   this.arr.image = "../updata/" +  this.arr.image+ ".jpg"
+                });
+            },
+            goback:function(){
+                window.location="index.html"
+            }
+
+        },
+        mounted(){
+            this.getdata()
+        }
+
+    })
+
+</script>
+</body>
+</html>

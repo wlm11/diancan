@@ -1,0 +1,355 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css" type="text/css" />
+    <link href="/css/dashboard.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles1.css">
+    <script src="/js/jquery-1.12.3.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
+    <style>
+        .navbar-inverse {
+            background-color: #4387b3;
+            color: #fff;
+        }
+        .navbar-inverse .navbar-brand {
+            color: #fff;
+        }
+        .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+            border-color: #4387b3;
+        }
+        .menu ol { padding-left:15px; border:#E7E7E7 1px solid; border-top:none;background: #f7f2e5;}
+        .menu li i{background-color: #ae9c7e;padding: 1px 4px;color: #fff;text-shadow: 0px 0px 0px rgba(255, 255, 255, 0.8);font-family: 宋体;font-style:normal;}
+        .menu a{color: #3f3f3f;text-decoration: none;}
+        .menu .no {display:none;}
+        .menu ol a{width: 228px;display: block;line-height: 2em;margin-left: 20px;}
+        .text{
+            width:60px;
+            display: inline-block;
+            margin-top:10px;
+        }
+        .imgright{
+            border-radius:100%;
+            float:left;margin-top: 12px;
+            margin-right: 14px;
+            width: 40px; height: 40px;
+            background:url('/images/t01d7de9ec9fd9ce918.png')
+        }
+
+        .box{
+            position: absolute;
+            padding-top:13px;
+            left:0px;
+            width:18%;
+        }
+        ul.expmenu div.header{
+            background-color:#f8f8f8!important;
+            color:#000!important;
+            font-size:20px;
+        }
+        .content{
+            position: relative;
+            width:100%;
+            height: 100%;
+        }
+        .mains{
+            width:82%;
+            position: absolute;
+            right: 0px;
+        }
+        .panel-default{
+            padding-top:10px;
+        }
+        .panel-heading{
+            padding-top:20px;
+            padding-bottom:5px;
+            background-color:#eee!important;
+        }
+        .breadcrumb{
+            background-color:#eee!important;
+        }
+        .panel-body{
+            background-color:#f8f8f8;
+        }
+        .formbox{
+            width:70%;
+            padding-left:10%;
+            padding-top:5%;
+        }
+        .imgbox img{
+            width:100px;
+        }
+
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CMS后台管理系统</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse navbar-right">
+            <li class="dropdown">
+                <div href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    <div  class="imgright" >
+
+                    </div>
+                    <p class="text">欢迎光临 amdim</p>
+                    <span class="caret"></span>
+                </div>
+            </li>
+        </div>
+    </div>
+</nav>
+
+<div class="content">
+    <div class="box">
+        <ul class="expmenu">
+            <li>
+                <div class="header">
+                    <span class="label">控制台</span>
+                </div>
+            </li>
+            <li>
+                <div class="header">
+                    <span class="label">管理员管理</span>
+                    <span class="arrow down"></span>
+                </div>
+            </li>
+            <li>
+                <div class="header">
+                    <span class="label">内容分类管理</span>
+                    <span class="arrow down"></span>
+                </div>
+            </li>
+            <li>
+                <div class="header">
+                    <span class="label">内容管理</span>
+                    <span class="arrow down"></span>
+                </div>
+            </li>
+            <li>
+                <div class="header">
+                    <span class="label"  style="color:blue;">商品管理</span>
+                    <span class="arrow up"></span>
+                </div>
+                <span class="no">
+                <ul class="menu" style="display:block;">
+                    <li><a href="/class"> 商品分类</a></li>
+                    <li><a href="/shoplist"> 商品列表</a></li>
+                    <li><a href="/addshop" style="color:blue;"> 增加商品</a></li>
+                </ul>
+            </span>
+            </li>
+            <li>
+                <div class="header">
+                    <span class="label">订单管理</span>
+                    <span class="arrow down"></span>
+                </div>
+            </li>
+            <li>
+                <div class="header">
+                    <span class="label">用户管理</span>
+                    <span class="arrow down"></span>
+                </div>
+            </li>
+            <li>
+                <div class="header">
+                    <span class="label">系统设置</span>
+                    <span class="arrow down"></span>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="mains">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <ol class="breadcrumb">
+                        <li><a href="#">首页</a></li>
+                        <li class="active">增加内容</li>
+                    </ol>
+                </h3>
+            </div>
+            <div class="panel-body">
+                <div>
+
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">基本设置</a></li>
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active formbox" id="home">
+                            <form class="form-horizontal" action="/addshops" enctype="multipart/form-data" method="post">
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">所属分类</label>
+                                    <div class="col-sm-10">
+                                        <select name="class">
+                                            <%for(var i=0;i<result.length;i++){%>
+                                            <option value="<%=result[i].class%>"><%=result[i].class%></option>
+                                           <%}%>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputEmail3" class="col-sm-2 control-label">商品名称</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="shop"  name="shop">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">商品价格</label>
+                                    <div class="col-sm-10">
+                                        <input type="number" class="form-control" id="inputPassword3" name="money">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">商品排序</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" name="sorts">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">封面图</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" id="exampleInputFile" name="image" onchange="showPreview(this)">
+                                    </div>
+                                    <div class="imgbox">
+                                        <img id="portrait" src="" style="display:none;" />
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">商品描述</label>
+                                    <div class="col-sm-10">
+                                        <textarea class="form-control" rows="3" name="content"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label">状态</label>
+                                    <div class="col-sm-10">
+                                        <input type="radio" name="states" value="true">审核
+                                        <input type="radio" name="states" value="false">未审核
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputPassword3" class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-10">
+                                        <input type="checkbox" name="quality" checked value="true">精品
+                                        <input type="checkbox" name="hot" checked value="true">热销
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="submit" class="btn btn-default" id="btn">提交</button>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        /* 滑动/展开 */
+        $("ul.expmenu li > div.header").click(function(){
+
+            var arrow = $(this).find("span.arrow");
+
+            if(arrow.hasClass("up")){
+                arrow.removeClass("up");
+                arrow.addClass("down");
+            }else if(arrow.hasClass("down")){
+                arrow.removeClass("down");
+                arrow.addClass("up");
+            }
+
+            $(this).parent().find("ul.menu").slideToggle();
+
+        });
+
+    });
+
+
+    function showPreview(source) {
+        var file = source.files[0];
+        if(window.FileReader) {
+            var fr = new FileReader();
+            console.log(fr);
+            var portrait = document.getElementById('portrait');
+            fr.onloadend = function(e) {
+                portrait.src = e.target.result;
+            };
+            fr.readAsDataURL(file);
+            portrait.style.display = 'block';
+        }
+
+    }
+
+</script>
+<script language="JavaScript">
+    <!--//
+    function ShowMenu(obj,n){
+        var Nav = obj.parentNode;
+        if(!Nav.id){
+            var BName = Nav.getElementsByTagName("ol");
+            var HName = Nav.getElementsByTagName("h2");
+            var t = 2;
+        }else{
+            var BName = document.getElementById(Nav.id).getElementsByTagName("span");
+            var HName = document.getElementById(Nav.id).getElementsByTagName(".header");
+            var t = 1;
+        }
+        for(var i=0; i<HName.length;i++){
+            HName[i].innerHTML = HName[i].innerHTML.replace("-","+");
+            HName[i].className = "";
+        }
+        obj.className = "h" + t;
+        for(var i=0; i<BName.length; i++){if(i!=n){BName[i].className = "no";}}
+        if(BName[n].className == "no"){
+            BName[n].className = "";
+            obj.innerHTML = obj.innerHTML.replace("+","-");
+        }else{
+            BName[n].className = "no";
+            obj.className = "";
+            obj.innerHTML = obj.innerHTML.replace("-","+");
+        }
+    }
+    //-->
+</script>
+<script>
+    $("#shop").blur(function(){
+        var shop=$(this).val()
+        $.ajax({
+            "url":"/checkname",
+            "data":{
+                "name":shop
+            },
+            "success":function(data){
+                if(data==-1){
+                    alert("该菜已存在")
+                }
+            }
+        })
+    })
+</script>
+
+</body>
+</html>
